@@ -1,0 +1,20 @@
+{
+  "name": "sair",
+  "version": "1.0.0",
+  "description": "The Browser that works for you.",
+  "homepage": "https://github.com/Amir5470/Sair#readme",
+  "bugs": {
+    "url": "https://github.com/Amir5470/Sair/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Amir5470/Sair.git"
+  },
+  "license": "ISC",
+  "author": "Amir Mechkour && Owen Forloine",
+  "type": "Co-Founders",
+  "main": "main.js",
+  "scripts": {
+    "test": "start"
+  }
+}

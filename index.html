@@ -12,7 +12,7 @@
 
 <body>
   <div id="app">
-    <tab-group new-tab-button="true" sortable="true"></tab-group>
+  
     <!-- Sidebar -->
     <section id="sidebar">
       <div id="utop">
@@ -41,7 +41,7 @@
     </div>
     <input id="urlsearch" v-model="url" @keyup.enter="go" placeholder="Search or enter URL" />
   </container>
-  
+
   <script>
     require('./renderer.js')
     function togglePlus() {

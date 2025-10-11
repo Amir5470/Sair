@@ -12,7 +12,7 @@
   },
   "license": "ISC",
   "author": "Amir Mechkour && Owen Forloine",
-  "type": "Co-Founders",
+  "type": "module",
   "main": "main.js",
   "scripts": {
     "test": "start"

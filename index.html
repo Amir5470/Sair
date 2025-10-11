@@ -10,6 +10,7 @@
 </head>
 
 <body>
+  
   <div id="app">
     <div id="sidebar">
       <img src="sairtransparent.png" alt="Sair-Logo" id="logo">
@@ -19,12 +20,13 @@
     </div>
     <webview id="webview" src="https://google.com"></webview>
   </div>
-
+<img src="sairtransparent.png" id="spinner">
   <container id="taboverlay" style="display:none;">
     <div id="tabs">
     </div>
     <input id="urlsearch" v-model="url" @keyup.enter="go" placeholder="Search or enter URL" />
   </container>
+  
 </body>
 
 </html>

@@ -1,6 +1,16 @@
 body {
     box-sizing: border-box;
-    background-color:rgb(42, 65, 98);
+    background-color: rgb(42, 65, 98);
+}
+
+#spinner {
+    justify-self: center;
+    align-self: center;
+    place-self: center;
+    vertical-align: middle;
+    opacity: 0.1;
+    width: 50px;
+    height: 50px;
 }
 
 #sidebar {
@@ -12,37 +22,41 @@ body {
     margin: 5px 5px;
     padding: 5px;
     gap: 5px;
+    display: flex;
+    justify-content: top;
+    flex-direction: column;
 }
 
 #sidebar img {
     width: 30px;
     height: 30px;
-    position: absolute;
+    position: relative;
     top: 15px;
     left: 15px;
+    margin: 10px;
 }
 
 #sidebar button {
-    width: 50px;
+    justify-content: center;
+    width: 90%;
     height: 30px;
     display: flex;
     background-color: rgba(0, 0, 0, 0.2);
-    color: rgb(46, 46, 46);
-    flex-direction: column;
-    align-items: center;
+    color: rgb(246, 246, 246);
     border: 2px solid #000000;
+    align-items: center;
     border-radius: 10px;
     margin-bottom: 10px;
 }
 
 #sidebar button:hover {
-    size: 102%;
+    width: 102%;
     transition: size 2s ease-in-out;
     background-color: rgba(0, 0, 0, 0.5);
 }
 
 #sidebar button:active {
-    
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 #webview {

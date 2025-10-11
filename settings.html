@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Settings</title>
+<link rel="stylesheet" href="settings.css">
+<script src="https://unpkg.com/vue@3"></script>
+<script defer src="settings.js"></script>
+
+</head>
+<body>
+
+<div id="sidebar">
+  <div id="logo-container"><img src="sairtransparent.png" id="logo" alt="Sair Logo"><h2>Sair</h2></div>
+  <button onclick="showSection('you')">You and Sair</button>
+  <button onclick="showSection('autofill')">Autofill and passwords</button>
+  <button onclick="showSection('privacy')">Privacy and security</button>
+  <button onclick="showSection('performance')">Performance</button>
+  <button onclick="showSection('appearance')">Appearance</button>
+  <button onclick="showSection('search')">Search engine</button>
+  <button onclick="showSection('browser')">Default browser</button>
+  <button onclick="showSection('languages')">Languages</button>
+  <button onclick="showSection('downloads')">Downloads</button>
+  <button onclick="showSection('accessibility')">Accessibility</button>
+  <button onclick="showSection('system')">System</button>
+  <button onclick="showSection('reset')">Reset settings</button>
+  <button onclick="showSection('extensions')">Extensions</button>
+  <button onclick="showSection('about')">About Sair</button>
+</div>
+
+<div id="content">
+  <div id="you" class="section">
+    <h1>You and Sair</h1>
+    <p>Accounts</p>
+    <div id="account-management">
+      <button id="sign-in">Sign in to Sair</button>
+      <button id="sync">Sync</button>
+      <button id="manage-account" onclick="location.href='https://myaccount.google.com/'" >Manage your Google Account</button>
+    </div>
+  </div>
+  <div id="autofill" class="section" style="display:none;">
+    <h1>Autofill and passwords</h1>
+    <p>Manage passwords and forms</p>
+  </div>
+  <div id="privacy" class="section" style="display:none;">
+    <h1>Privacy and security</h1>
+    <p>Cookies, site settings, security...</p>
+  </div>
+  <div id="performance" class="section" style="display:none;">
+    <h1>Performance</h1>
+    <p>Hardware acceleration, background apps...</p>
+  </div>
+  <div id="ai-innovations" class="section" style="display:none;">
+    <h1>AI Innovations</h1>
+    <p>Reimagine Sair, supercharged with AI</p>
+    <button id="explore-ai">Explore AI Innovations</button>
+  </div>
+  <div id="appearance" class="section" style="display:none;">
+    <h1>Appearance</h1>
+    <label>
+        <input type="checkbox" id="dark-mode-toggle" /> Dark Mode
+      </label>
+
+      <label for="accent-color">Accent color</label>
+      <select id="accent-color">
+        <option value="blue">Blue</option>
+        <option value="red">Red</option>
+        <option value="green">Green</option>
+        <option value="yellow">Yellow</option>
+        <option value="purple">Purple</option>
+        <option value="pink">Pink</option>
+        <option value="orange">Orange</option>
+      </select>
+  </div>
+  <div id="search" class="section" style="display:none;">
+    <h1>Search engine</h1>
+    <p>Google</p><button onclick="engineSwitch()" id="change-engine">Change</button>
+    <div class="management">
+      <button class="engine">Google (Default)</button>
+      <button class="engine">Microsoft Bing</button>
+      <button class="engine">Yahoo!</button>
+      <button class="engine">DuckDuckGo</button>
+      <button class="engine">Yandex</button> 
+    </div>
+  </div>
+  <div id="browser" class="section" style="display:none;">
+    <h1>Default browser</h1>
+    <p>Set as default browser</p>
+  </div>
+  <div id="startup" class="section" style="display:none;">
+    <h1>On Startup</h1>
+    <p>Where do you want to go on startup?</p>
+  </div>
+  <div id="languages" class="section" style="display:none;">
+    <h1>Languages</h1>
+    <p>Preferred languages</p>
+  </div>
+  <div id="downloads" class="section" style="display:none;">
+    <h1>Downloads</h1>
+    <p>Download location and options</p>
+  </div>
+  <div id="accessibility" class="section" style="display:none;">
+    <h1>Accessibility</h1>
+    <p>Screen readers, captions, etc.</p>
+  </div>
+  <div id="system" class="section" style="display:none;">
+    <h1>System</h1>
+    <p>Hardware acceleration, proxy settings...</p>
+  </div>
+  <div id="reset" class="section" style="display:none;">
+    <h1>Reset settings</h1>
+    <p>Reset to default settings</p>
+  </div>
+  <div id="extensions" class="section" style="display:none;">
+    <h1>Extensions</h1>
+    <p>Manage installed extensions</p>
+  </div>
+  <div id="about" class="section" style="display:none;">
+    <h1>About Sair</h1>
+    <p>Version info, Chromium base info...</p>
+  </div>
+</div>
+
+<script>
+  function showSection(id){
+    document.querySelectorAll('#content .section').forEach(s => s.style.display='none');
+    const sec = document.getElementById(id);
+    if(sec) sec.style.display='block';
+  }
+  function engineSwitch(){
+    const mgmt = document.querySelector('#search .management');
+    if(mgmt.style.display==='block'){
+      mgmt.style.display='none';
+      document.getElementById('change-engine').innerText = 'Change';
+    } else {
+      mgmt.style.display='block';
+      document.getElementById('change-engine').innerText = 'Close';
+    }
+  }
+function changeAccent(color){
+  localStorage.setItem('sair.accent', color)
+  document.body.className = document.body.className.replace(/\baccent-\w+\b/g,'') // remove old accent
+  document.body.classList.add(`accent-${color}`)
+}
+window.addEventListener('DOMContentLoaded', ()=>{
+  const saved = localStorage.getItem('sair.accent') || 'blue'
+  document.body.classList.add(`accent-${saved}`)
+  document.getElementById('accent-color').value = saved
+})
+
+function toggleDarkMode(checked){
+  localStorage.setItem('sair.darkMode', checked ? '1' : '0')
+  document.body.classList.toggle('dark-mode', checked)
+}
+window.addEventListener('DOMContentLoaded', ()=>{
+  const dark = localStorage.getItem('sair.darkMode') === '1'
+  document.getElementById('dark-mode-toggle').checked = dark
+  document.body.classList.toggle('dark-mode', dark)
+  document.getElementById('dark-mode-toggle').addEventListener('change', e=>{
+    toggleDarkMode(e.target.checked)
+  })
+})
+
+
+
+</script>
+
+</body>
+</html>

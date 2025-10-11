@@ -1,0 +1,76 @@
+BrowserWindow controls (main.js / window itself)
+const win = new BrowserWindow({
+  width: 1000,             // window width
+  height: 700,             // window height
+  x: 100,                  // horizontal position
+  y: 100,                  // vertical position
+  minWidth: 500,           // minimum width
+  minHeight: 400,          // minimum height
+  maxWidth: 1920,          // max width
+  maxHeight: 1080,         // max height
+  resizable: true,         // can user resize
+  movable: true,           // can move window
+  minimizable: true,       // can minimize
+  maximizable: true,       // can maximize
+  closable: true,          // can close
+  alwaysOnTop: false,      // stays on top
+  fullscreen: false,       // start in fullscreen
+  fullscreenable: true,    // can enter fullscreen
+  frame: true,             // show window frame (title bar)
+  title: "My Browser",     // window title
+  transparent: false,      // transparent background
+  kiosk: false,            // kiosk mode (fullscreen, no exit)
+  skipTaskbar: false,      // hide from taskbar
+  icon: "icon.png",        // window icon
+  show: true,              // show immediately
+  webPreferences: {
+    nodeIntegration: true,       // allow node in web page
+    contextIsolation: false,     // disable context isolation
+    enableRemoteModule: true,    // allow remote module
+    webviewTag: true             // enable <webview> tag
+  }
+})
+
+// methods you can call on the window
+win.minimize()       // minimize
+win.maximize()       // maximize
+win.unmaximize()     // undo maximize
+win.restore()        // restore from minimized/maximized
+win.focus()          // focus window
+win.blur()           // remove focus
+win.show()           // show window
+win.hide()           // hide window
+win.close()          // close window
+win.setBounds({x:0,y:0,width:500,height:500}) // resize/move
+win.setAlwaysOnTop(true) // topmost
+win.setFullScreen(true)  // fullscreen
+
+Webview controls (<webview> in HTML)
+<webview id="webview" src="https://example.com" style="width:100%;height:100%"></webview>
+
+const webview = document.getElementById('webview')
+
+// navigation
+webview.loadURL("https://google.com") // load url
+webview.reload()                      // reload page
+webview.stop()                        // stop loading
+webview.goBack()                      // back
+webview.goForward()                   // forward
+webview.canGoBack()                   // check if can go back
+webview.canGoForward()                // check if can go forward
+
+// zoom
+webview.setZoomFactor(1.0)            // set zoom
+webview.getZoomFactor()               // get zoom
+
+// devtools
+webview.openDevTools()                // open devtools
+webview.closeDevTools()               // close devtools
+webview.isDevToolsOpened()            // check devtools
+
+// events
+webview.addEventListener('did-start-loading', ()=>{})
+webview.addEventListener('did-stop-loading', ()=>{})
+webview.addEventListener('dom-ready', ()=>{})
+webview.addEventListener('new-window', (e)=>{}) // link clicked in new window
+webview.addEventListener('console-message', (e)=>{}) // console logs from page

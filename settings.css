@@ -1,0 +1,64 @@
+body {
+     margin:0;
+      font-family:
+       sans-serif;
+        display:flex;
+         height:100vh;
+          color:#202124; 
+          background:#f8f9fa;
+        }
+  #sidebar {
+     width:220px; 
+     background:#f1f3f4;
+      display:flex;
+       flex-direction:column;
+        padding:10px;
+        box-shadow:2px 0 5px rgba(0,0,0,0.1);
+    }
+  #sidebar h2 { 
+    font-size:16px;
+     margin:10px 0; 
+}
+    #sidebar button {
+         text-align:left; 
+         padding:8px;
+          margin:2px 0;
+           border:none;
+            background:none;
+             cursor:pointer; 
+             font-size:14px; 
+             color:#202124; 
+             border-radius:4px; 
+            }
+    #sidebar button:hover { background:#e8eaed; }
+    #content { flex:1; padding:20px; overflow-y:auto; background:#fff; }
+    h1,h2,h3 { margin:10px 0; font-weight:400; }
+    .section { margin-bottom:30px; }
+    .toggle { display:flex; align-items:center; margin:5px 0; }
+    .toggle input { margin-right:10px; }
+    .input { display:flex; flex-direction:column; margin:5px 0; }
+    .input label { margin-bottom:3px; font-size:14px; }
+    .input input, .input select { padding:6px; font-size:14px; border:1px solid #dadce0; border-radius:4px; }
+    #account-management button { display:block; width:100%; margin:5px 0; padding:8px; border:none; background:#1a73e8; color:#fff; border-radius:4px; cursor:pointer; }
+    #account-management button:hover { background:#1669c1; }
+    #engine { margin-top:10px; background: #1669c1; color: white; border: none; padding: 8px; border-radius: 4px; cursor: pointer; }
+    #engine:hover { background: #155ab6; }
+    .management { margin-top:10px; }
+    .management button { display:block; width:100%; margin:5px 0; padding:8px; border:none; background:#e8eaed; color:#202124; border-radius:4px; cursor:pointer; text-align:left; }
+    .management button:hover { background:#d2d5d9; }
+    .management button.selected { background:#1a73e8; color:#fff; } 
+    .management button.selected:hover { background:#1669c1; }
+    #change-engine { margin-top:10px; background: #1669c1; color: white; border: none; padding: 8px; border-radius: 4px; cursor: pointer; }
+    #change-engine:hover { background: #155ab6; }
+    #logo {
+        width: 25px;
+        height: auto;
+    }
+    logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row !important;
+        margin-bottom: 20px;
+        gap: 5px;
+    }

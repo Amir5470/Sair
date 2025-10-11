@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Sair</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/vue@3"></script>
+  <script defer src="renderer.js"></script>
+  <link rel="stylesheet" href="node_modules/electron-tabs/electron-tabs.css">
+</head>
+
+<body>
+  <div id="app">
+    <tab-group new-tab-button="true" sortable="true"></tab-group>
+    <!-- Sidebar -->
+    <section id="sidebar">
+      <div id="utop">
+        <logo src="sairtransparent.png" alt="Sair Logo"></logo>
+        <h1>Sair</h1>
+        <button id="backbtn">←</button>
+        <button id="forwardbtn">→</button>
+        <button id="reloadbtn">⟳</button>
+      </div>
+      <div id="contain">
+        <button id="newbutton">+</button>
+        <div id="plus" style="display:none;">
+          <button id="newtabbtn">New Tab</button>
+          <button id="newwindowbtn">New Window</button>
+          <button id="newprivwindowbtn">New Incognito Window</button>
+        </div>
+      </div>
+    </section>
+    <!-- Webview container -->
+    <div id="webview-container">
+      <div id="webviews" style="flex:1; display:flex; flex-direction:column;"></div>
+    </div>
+  </div>
+  <container id="taboverlay" style="display:none;">
+    <div id="tabs">
+    </div>
+    <input id="urlsearch" v-model="url" @keyup.enter="go" placeholder="Search or enter URL" />
+  </container>
+  
+  <script>
+    require('./renderer.js')
+    function togglePlus() {
+      const plusMenu = document.getElementById('plus');
+      if (plusMenu.style.display === 'none') {
+        plusMenu.style.display = 'block';
+      } else {
+        plusMenu.style.display = 'none';
+      }
+    }
+    document.getElementById('newbutton').addEventListener('click', togglePlus);
+  </script>
+</body>
+
+</html>

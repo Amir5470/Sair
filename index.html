@@ -13,30 +13,18 @@
   <div id="app">
     <div id="sidebar">
       <img src="sairtransparent.png" alt="Sair-Logo" id="logo">
-      <button id="backbtn"></button>
-      <button id="forwardbtn"></button>
-      <button id="reloadbtn"></button>
+      <button id="backbtn">←</button>
+      <button id="forwardbtn">→</button>
+      <button id="reloadbtn">↻</button>
     </div>
-    <webview></webview>
+    <webview id="webview" src="https://google.com"></webview>
   </div>
+
   <container id="taboverlay" style="display:none;">
     <div id="tabs">
     </div>
     <input id="urlsearch" v-model="url" @keyup.enter="go" placeholder="Search or enter URL" />
   </container>
-
-  <script>
-    require('./renderer.js')
-    function togglePlus() {
-      const plusMenu = document.getElementById('plus');
-      if (plusMenu.style.display === 'none') {
-        plusMenu.style.display = 'block';
-      } else {
-        plusMenu.style.display = 'none';
-      }
-    }
-    document.getElementById('newbutton').addEventListener('click', togglePlus);
-  </script>
 </body>
 
 </html>

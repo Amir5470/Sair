@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, electron } = require('electron')
+const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
 
 let win

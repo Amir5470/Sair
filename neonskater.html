@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Neon Street Skater — split</title>
+<style>
+  :root{--neon:#0ff;--pink:#ff007f;--bg:#000}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--neon);font-family:monospace}
+  #container{position:relative;height:100vh;overflow:hidden}
+  canvas{display:block;margin:0 auto;background:#000;max-width:100%}
+  #ui{
+    position:absolute;left:14px;top:12px;font-size:16px;z-index:20;
+    display:flex;gap:12px;align-items:center
+  }
+  .btn{background:#111;border:1px solid #222;padding:6px 10px;color:var(--neon);cursor:pointer}
+  #scorebox{font-size:16px}
+  #shopModal{
+    position:absolute;right:20px;top:20px;background:#070707;border:1px solid #222;padding:12px;color:var(--neon);
+    width:240px;z-index:30;display:none
+  }
+  .item{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px dashed #222}
+  #message{position:absolute;left:50%;transform:translateX(-50%);top:70px;color:var(--pink);z-index:50}
+  #hud{position:absolute;right:14px;bottom:14px;color:var(--neon);z-index:20;text-align:right}
+  .small{font-size:13px;color:#9ff}
+</style>
+</head>
+<body>
+<div id="container">
+  <div id="ui">
+    <button id="startBtn" class="btn">Start</button>
+    <button id="pauseBtn" class="btn">Pause</button>
+    <button id="shopBtn" class="btn">Shop</button>
+    <div id="scorebox">Score: <span id="score">0</span></div>
+    <div id="coinsbox">Coins: <span id="coins">0</span></div>
+  </div>
+
+  <div id="shopModal">
+    <strong>Shop</strong>
+    <div class="item">
+      <div>Kickflip (auto)</div>
+      <div><button class="btn buy" data-id="kickflip" data-cost="100">Buy 100</button></div>
+    </div>
+    <div class="item">
+      <div>Jetpack (hold J)</div>
+      <div><button class="btn buy" data-id="jetpack" data-cost="300">Buy 300</button></div>
+    </div>
+    <div class="item">
+      <div>Extra Trick (double score)</div>
+      <div><button class="btn buy" data-id="double" data-cost="200">Buy 200</button></div>
+    </div>
+    <div style="margin-top:8px;text-align:right">
+      <button id="closeShop" class="btn">Close</button>
+    </div>
+  </div>
+
+  <div id="message"></div>
+
+  <canvas id="game"></canvas>
+
+  <div id="hud">
+    <div class="small">Trick: <span id="trickState">none</span></div>
+    <div class="small">Jetpack Fuel: <span id="fuel">0</span></div>
+  </div>
+</div>
+
+<script src="game.js"></script>
+</body>
+</html>

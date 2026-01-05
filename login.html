@@ -1,0 +1,45 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Sair — Sign in</title>
+    <link rel="stylesheet" href="settings.css">
+</head>
+
+<body>
+    <main class="settings-root">
+        <section class="center-card">
+            <h1 class="page-title">Sign in to Sair</h1>
+
+            <div class="auth-actions">
+                <button id="googleSignIn" class="btn primary">Continue with Google</button>
+
+                <div class="divider"><span>or</span></div>
+
+                <input id="email" class="form-input" placeholder="Email" />
+                <input id="password" class="form-input" type="password" placeholder="Password" />
+
+                <div class="row-gap">
+                    <button id="emailSignIn" class="btn">Sign in</button>
+                    <button id="emailSignup" class="btn muted">Create account</button>
+                </div>
+
+                <p id="authMessage" class="muted small"></p>
+
+                <div class="row-gap">
+                    <button id="continueGuest" class="btn link">Continue as guest</button>
+                    <button id="openSettings" class="btn small">Open Settings</button>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- firebase + app code -->
+    <script type="module" src="login.js"></script>
+</body>
+
+</html>

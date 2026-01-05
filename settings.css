@@ -1,0 +1,48 @@
+/* settings.css - simple, modern */
+:root{
+  --bg:#0d0e0e;
+  --card:#1f2226;
+  --muted:#9aa0a6;
+  --accent:#3579df;
+  --text:#f2f2f2;
+  --glass: rgba(255,255,255,0.03);
+  font-family: "Lexend", system-ui, sans-serif;
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);height:100vh}
+.settings-root{display:flex;min-height:100vh}
+
+/* sidebar */
+.settings-sidebar{
+  width:260px;background:#111; padding:28px 18px; border-right:1px solid rgba(255,255,255,0.03);
+}
+.brand{margin:0 0 20px 0;font-size:18px;color:var(--muted)}
+.settings-sidebar nav{display:flex;flex-direction:column;gap:8px}
+.side-btn{
+  text-align:left;padding:10px 12px;border-radius:6px;border:none;background:transparent;color:var(--muted);cursor:pointer;
+}
+.side-btn.active{background:linear-gradient(90deg, rgba(255,255,255,0.03), transparent);color:var(--text)}
+.side-btn:hover{color:var(--text)}
+
+/* main */
+.settings-main{flex:1;padding:20px 30px;display:flex;flex-direction:column;gap:16px}
+.settings-header{display:flex;justify-content:space-between;align-items:center}
+.page-title{margin:0}
+.header-actions{display:flex;gap:8px;align-items:center}
+.btn{padding:8px 12px;border-radius:6px;border:1px solid rgba(255,255,255,0.05);background:transparent;color:var(--text);cursor:pointer}
+.btn.primary{background:var(--accent);border-color:transparent}
+.btn.muted{opacity:.8}
+.btn.link{background:transparent;border:none;color:var(--muted)}
+.center-card{max-width:520px;margin:80px auto;padding:28px;background:var(--card);border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.5);text-align:center}
+
+/* panels */
+.panel-wrap{background:transparent;padding:10px;border-radius:8px}
+.panel{background:rgba(255,255,255,0.02);padding:18px;border-radius:8px;margin-bottom:12px}
+.hidden{display:none}
+.control-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px dashed rgba(255,255,255,0.02)}
+.control-row label{display:flex;align-items:center;gap:10px}
+.muted{color:var(--muted)}
+.small{font-size:12px}
+.row-gap{display:flex;gap:8px}
+.form-input{width:100%;padding:10px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:#0b0b0b;color:var(--text);margin:6px 0}

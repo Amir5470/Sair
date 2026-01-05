@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+
+:root {
+    --color: #3579df;
+    --white: #626262;
+    --colordark: #17262f;
+    --black: #0d0e0e;
+    --dark: #292929;
+    --bright: #f5f5f5;
+}
+
+body {
+    background-color: var(--black);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 25vh;
+}
+
+.lexend-h1 {
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    color: var(--bright);
+}
+
+.lexend-p {
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    color: var(--white);
+}
+
+.lexend-dark {
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    color: var(--black);
+}
+
+
+#searchbar {
+    width: 50%;
+    height: 50px;
+    background-color: var(--dark);
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: var(--white);
+    border-style: solid;
+    flex-direction: row;
+    justify-content: space-evenly;
+    display: flex;
+    margin-right: 20px;
+    align-items: center;
+}
+
+#searchlogo {
+    width: 20px;
+    height: 20px;
+}
+
+#url {
+    position: relative;
+    width: 55vh;
+    height: 80%;
+    align-items: center;
+    background-color: var(--dark);
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: aliceblue;
+    color: white;
+}
+
+#shortcutbtn {
+    width: 53px;
+    height: 53px;
+    background-color: rgb(197, 197, 197);
+    border-radius: 50px;
+    position: relative;
+    margin-top: 20px;
+    font-size: 16px;
+    padding: 15px;
+}
+
+#addshortcut {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#shortcutbtn:hover {
+    cursor: pointer;
+    background-color: rgb(176, 176, 176);
+}
+
+#shortcutbtn:active {
+    background-color: rgb(126, 125, 125);
+}
+
+#addshortcut p {
+    color: white;
+}
+
+#bookmarks {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+#popup-content {
+    display: flex;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    text-align: center;
+    flex-direction: column;
+}
+
+#lexenddiv {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.shortcut {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 15px;
+    margin-top: 20px;
+}
+
+.shortcut-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    background-color: rgb(197, 197, 197);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+}
+
+.shortcut-icon img {
+    width: 24px;
+    height: 24px;
+}
+.popupinput {
+    width: auto;
+    height: auto;
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--dark);
+    color: var(--black);
+    background-color:#f5f5f5;
+}

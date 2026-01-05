@@ -1,0 +1,125 @@
+<!-- settings.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Sair — Settings</title>
+    <link rel="stylesheet" href="settings.css">
+</head>
+
+<body>
+    <div class="settings-root">
+        <aside class="settings-sidebar">
+            <h3 class="brand">Settings</h3>
+            <nav>
+                <button class="side-btn active" data-panel="appearance">Appearance</button>
+                <button class="side-btn" data-panel="search">Search engine</button>
+                <button class="side-btn" data-panel="privacy">Privacy & security</button>
+                <button class="side-btn" data-panel="sync">Sync</button>
+                <button class="side-btn" data-panel="accounts">Accounts</button>
+                <button class="side-btn" data-panel="about">About</button>
+            </nav>
+        </aside>
+
+        <section class="settings-main">
+            <header class="settings-header">
+                <div>
+                    <h2 id="panelTitle">Appearance</h2>
+                    <p class="muted">Customize look and basic behavior</p>
+                </div>
+                <div class="header-actions">
+                    <button id="openLogin" class="btn">Sign in</button>
+                    <button id="saveBtn" class="btn primary">Save</button>
+                </div>
+            </header>
+
+            <div class="panel-wrap">
+                <!-- Appearance panel -->
+                <div class="panel" id="appearance">
+                    <h3>Theme & Accent</h3>
+                    <div class="control-row">
+                        <label>Accent color</label>
+                        <input id="accentColor" type="color">
+                    </div>
+
+                    <div class="control-row">
+                        <label>Theme</label>
+                        <select id="themeSelect">
+                            <option value="system">System default</option>
+                            <option value="light">Light</option>
+                            <option value="dark">Dark</option>
+                        </select>
+                    </div>
+
+                    <h3>Toolbar</h3>
+                    <div class="control-row">
+                        <label><input id="showHome" type="checkbox"> Show home button</label>
+                    </div>
+                </div>
+
+                <!-- Search engine -->
+                <div class="panel hidden" id="search">
+                    <h3>Default search engine</h3>
+                    <div class="control-row">
+                        <select id="searchEngineSelect">
+                            <option value="duckduckgo">DuckDuckGo</option>
+                            <option value="google">Google</option>
+                            <option value="bing">Bing</option>
+                            <option value="yahoo">Yahoo</option>
+                            <option value="brave">Brave</option>
+                        </select>
+                    </div>
+                    <div class="muted small">Change quick search, used in address bar</div>
+                </div>
+
+                <!-- Privacy -->
+                <div class="panel hidden" id="privacy">
+                    <h3>Privacy</h3>
+                    <div class="control-row">
+                        <label><input id="doNotTrack" type="checkbox"> Send Do Not Track</label>
+                    </div>
+                    <div class="control-row">
+                        <label><input id="blockThirdParty" type="checkbox"> Block 3rd party cookies</label>
+                    </div>
+                </div>
+
+                <!-- Sync -->
+                <div class="panel hidden" id="sync">
+                    <h3>Sync</h3>
+                    <div class="control-row">
+                        <label><input id="syncEnabled" type="checkbox"> Enable sync</label>
+                    </div>
+                    <div class="muted small">When signed in, settings will be stored to your account</div>
+                </div>
+
+                <!-- Accounts -->
+                <div class="panel hidden" id="accounts">
+                    <h3>Account</h3>
+                    <div class="control-row">
+                        <div>
+                            <p id="accountInfo" class="muted">Not signed in</p>
+                        </div>
+                        <div class="row-gap">
+                            <button id="accountSignIn" class="btn">Sign in</button>
+                            <button id="accountSignOut" class="btn muted">Sign out</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- About -->
+                <div class="panel hidden" id="about">
+                    <h3>About Sair</h3>
+                    <div class="muted small">Version: 1.2</div>
+                    <p class="muted small">Built with Electron — change settings or sign in to sync</p>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <script type="module" src="settings.js"></script>
+</body>
+
+</html>

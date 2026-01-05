@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Tab</title>
+    <link rel="stylesheet" href="./home.css">
+    <script defer src="home.js" ></script>
+</head>
+
+<body>
+    <h1 class="lexend-h1">Welcome to Sair</h1>
+    <div id="searchbar">
+        <div id="logo"><img id="searchlogo"
+                src="https://upload.wikimedia.org/wikipedia/en/thumb/9/90/The_DuckDuckGo_Duck.png/1200px-The_DuckDuckGo_Duck.png">
+        </div>
+        <div id="searchinput">
+            <input id="url" placeholder="Search DuckDuckGo or Enter URL"
+                onkeydown="if(event.key==='Enter'){ gototab() }">
+        </div>
+    </div>
+    <div id="bookmarks">
+        <div id="addshortcut">
+            <button id="shortcutbtn">+</button>
+            <p id="shortcutp" class="lexend-p">Add Shortcut</p>
+        </div>
+    </div>
+
+    <div id="popup-overlay">
+        <div id="popup-content">
+            <h2 class="lexend-dark">Add Shortcut</h2>
+            <div id="lexenddiv">
+                <label class="lexend-dark">Name:</label>
+                <input type="text" class="popupinput" placeholder="ie: Sair Website">
+                <label class="lexend-dark">URL:</label>
+                <input type="text" class="popupinput" placeholder="ie: sairbrowser.com">
+            </div>
+            <button id="saveshortcut">Save</button>
+        </div>
+    </div>
+
+    <script>
+        const { ipcRenderer } = require('electron')
+        function gototab() {
+            let query = document.getElementById('url').value
+            ipcRenderer.send('load-index', query)
+        }
+    </script>
+</body>
+
+</html>

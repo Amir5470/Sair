@@ -2,6 +2,12 @@
   "name": "sair",
   "version": "1.0.0",
   "description": "The Browser that works for you.",
+  "keywords": [
+    "electron",
+    "sair",
+    "browser",
+    "sair-browser"
+  ],
   "homepage": "https://github.com/Amir5470/Sair#readme",
   "bugs": {
     "url": "https://github.com/Amir5470/Sair/issues"
@@ -10,11 +16,18 @@
     "type": "git",
     "url": "git+https://github.com/Amir5470/Sair.git"
   },
-  "license": "ISC",
-  "author": "Amir Mechkour && Owen Forloine",
-  "type": "module",
+  "license": "MIT",
+  "author": "Amir Mechkour & Owen Forloine",
+  "type": "commonjs",
   "main": "main.js",
   "scripts": {
-    "test": "start"
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^38.2.2",
+    "electron-reload": "^2.0.0-alpha.1"
+  },
+  "dependencies": {
+    "firebase": "^12.4.0"
   }
 }

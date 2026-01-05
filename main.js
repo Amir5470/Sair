@@ -1,30 +1,40 @@
-const { app, BrowserWindow } = require('electron/main')
-const path = require('node:path')
+const { app, BrowserWindow, ipcMain } = require('electron')
+const path = require('path')
+require('electron-reload')(__dirname, {
+  electron: path.join(__dirname, 'node_modules', '.bin', 'electron')
+})
 
-function createWindow () {
-  const win = new BrowserWindow({
+let win
+
+const createWindow = () => {
+  win = new BrowserWindow({
+    title: "Sair",
     width: 800,
     height: 600,
+    frame: false,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
+      preload: path.join(__dirname, 'preload.js'),
+      webviewTag: true,
+      nodeIntegration: true,
+      contextIsolation: false,
+
     }
   })
 
-  win.loadFile('index.html')
+  win.webContents.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36')
+  win.loadFile('home.html')
 }
 
 app.whenReady().then(() => {
   createWindow()
-
-  app.on('activate', () => {
-    if (BrowserWindow.getAllWindows().length === 0) {
-      createWindow()
-    }
-  })
 })
 
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit()
-  }
+ipcMain.on('load-index', (e, query) => {
+  win.loadFile('index.html').then(() => {
+    win.webContents.send('open-query', query)
+  })
+})
+app.setAboutPanelOptions({
+  applicationName: "Sair",
+  applicationVersion: "1.2"
 })

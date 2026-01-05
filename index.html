@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sair</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="./renderer.js"></script>
+    <script>
+        const { ipcRenderer } = require('electron')
+
+        ipcRenderer.on('open-query', (e, query) => {
+            document.getElementById('url').value = query
+            go()
+        })
+    </script>
+
+</head>
+
+<body>
+    <div id="sidebar">
+        <div id="sidebtns">
+            <button id="backbtn" class="navbtn">←</button>
+            <button id="forwardbtn" class="navbtn">→</button>
+            <button id="reloadbtn" class="navbtn">↻</button>
+        </div>
+        <div id="sidetabs">
+            <div id="tab" style="width: 80%; float: center; height: 10px; background-color: rgb(77, 77, 77);"></div>
+        </div>
+        <button id="gotosettings" onclick="window.location.href = 'login.html'">Settings</button>
+    </div>
+    <div id="searchbar">
+        <div id="logo"><img id="searchlogo"
+                src="https://upload.wikimedia.org/wikipedia/en/thumb/9/90/The_DuckDuckGo_Duck.png/1200px-The_DuckDuckGo_Duck.png">
+        </div>
+        <div id="searchinput">
+            <input id="url" placeholder="Search DuckDuckGo or Enter URL"
+                onkeydown="if(event.key==='Enter'){ go(); addTab(); }">
+        </div>
+    </div>
+
+    <webview id="view" src=""></webview>
+
+    <script>
+        const url = document.getElementById('url')
+        const view = document.getElementById('view')
+
+        function go() {
+            let urlval = url.value.trim()
+            if (urlval.includes(' ') || !urlval.includes('.')) {
+                urlval = 'https://duckduckgo.com/?q=' + encodeURIComponent(urlval)
+            } else if (!urlval.startsWith('http')) {
+                urlval = 'https://' + urlval
+            }
+            document.getElementById('view').src = urlval
+        }
+
+        function setupBackButton() {
+            const backbtn = document.getElementById("backbtn");
+            if (backbtn) {
+                backbtn.addEventListener("click", function () {
+                    if (view.canGoBack()) {
+                        view.goBack();
+                    }
+                });
+            }
+        }
+
+        function setupForwardButton() {
+            const forwardbtn = document.getElementById("forwardbtn");
+            if (forwardbtn) {
+                forwardbtn.addEventListener("click", function () {
+                    if (view.canGoForward()) {
+                        view.goForward();
+                    }
+                });
+            }
+        }
+
+        function setupReloadButton() {
+            const reloadbtn = document.getElementById("reloadbtn");
+            if (reloadbtn) {
+                reloadbtn.addEventListener("click", function () {
+                    view.reload();
+                });
+            }
+        }
+
+        setupBackButton();
+        setupForwardButton();
+        setupReloadButton();
+    </script>
+    </script>
+</body>
+
+</html>

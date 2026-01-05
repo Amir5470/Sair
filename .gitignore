@@ -1,0 +1,24 @@
+# Node modules
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Electron / build folders
+dist/
+out/
+release/
+*.asar
+
+# Environment / config
+.env
+
+# IDE/editor stuff
+.vscode/
+.idea/

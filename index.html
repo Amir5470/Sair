@@ -8,31 +8,32 @@
     <link rel="stylesheet" href="style.css">
     <script defer src="./renderer.js"></script>
     <script>
-        const { ipcRenderer } = require('electron')
+        window.api.onOpenQuery((query) => {
+            const input = document.getElementById('url');
+            if (!input) return;
 
-        ipcRenderer.on('open-query', (e, query) => {
-            document.getElementById('url').value = query
-            go()
-        })
+            input.value = query;
+            go();
+        });
     </script>
+
 
 </head>
 
 <body>
     <div id="sidebar">
         <div id="sidebtns">
-            <button id="backbtn" class="navbtn">←</button>
-            <button id="forwardbtn" class="navbtn">→</button>
-            <button id="reloadbtn" class="navbtn">↻</button>
+            <button id="backbtn" class="navbtn sidebtn">←</button>
+            <button id="forwardbtn" class="navbtn sidebtn">→</button>
+            <button id="reloadbtn" class="navbtn sidebtn">↻</button>
         </div>
         <div id="sidetabs">
-            <div id="tab" style="width: 80%; float: center; height: 10px; background-color: rgb(77, 77, 77);"></div>
+
         </div>
-        <button id="gotosettings" onclick="window.location.href = 'login.html'">Settings</button>
+        <button id="gotosettings" class="sidebtn" onclick="window.location.href = 'login.html'">Settings</button>
     </div>
     <div id="searchbar">
-        <div id="logo"><img id="searchlogo"
-                src="https://upload.wikimedia.org/wikipedia/en/thumb/9/90/The_DuckDuckGo_Duck.png/1200px-The_DuckDuckGo_Duck.png">
+        <div id="logo"><img id="searchlogo" src="./images/sairtransparent.png">
         </div>
         <div id="searchinput">
             <input id="url" placeholder="Search DuckDuckGo or Enter URL"
@@ -56,23 +57,23 @@
             document.getElementById('view').src = urlval
         }
 
-        function setupBackButton() {
-            const backbtn = document.getElementById("backbtn");
-            if (backbtn) {
-                backbtn.addEventListener("click", function () {
-                    if (view.canGoBack()) {
-                        view.goBack();
-                    }
-                });
-            }
-        }
-
         function setupForwardButton() {
             const forwardbtn = document.getElementById("forwardbtn");
             if (forwardbtn) {
                 forwardbtn.addEventListener("click", function () {
                     if (view.canGoForward()) {
                         view.goForward();
+                    }
+                });
+            }
+        }
+
+        function setupBackButton() {
+            const backbtn = document.getElementById("backbtn");
+            if (backbtn) {
+                backbtn.addEventListener("click", function () {
+                    if (view && typeof view.canGoBack === 'function' && view.canGoBack()) {
+                        view.goBack();
                     }
                 });
             }
@@ -90,7 +91,38 @@
         setupBackButton();
         setupForwardButton();
         setupReloadButton();
-    </script>
+
+
+
+        // Keep the URL input in sync when the webview navigates
+        function syncInputWithView(urlStr) {
+            const inputEl = document.getElementById('url');
+            if (!inputEl) return;
+            inputEl.value = urlStr || '';
+        }
+
+        if (view) {
+            view.addEventListener('did-navigate', (e) => {
+                syncInputWithView(e.url);
+            });
+            view.addEventListener('did-navigate-in-page', (e) => {
+                syncInputWithView(e.url);
+            });
+            view.addEventListener('did-start-loading', () => {
+                const current = typeof view.getURL === 'function' ? view.getURL() : view.src;
+                if (current) syncInputWithView(current);
+            });
+            view.addEventListener('did-stop-loading', () => {
+                const current = typeof view.getURL === 'function' ? view.getURL() : view.src;
+                if (current) syncInputWithView(current);
+            });
+        }
+
+        const logo = document.getElementById('logo');
+        logo.addEventListener('click', () => {
+            window.location.href = 'home.html';
+        });
+        
     </script>
 </body>
 

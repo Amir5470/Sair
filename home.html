@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Tab</title>
     <link rel="stylesheet" href="./home.css">
-    <script defer src="home.js" ></script>
+    <script defer src="home.js"></script>
 </head>
 
 <body>
@@ -16,8 +16,7 @@
                 src="https://upload.wikimedia.org/wikipedia/en/thumb/9/90/The_DuckDuckGo_Duck.png/1200px-The_DuckDuckGo_Duck.png">
         </div>
         <div id="searchinput">
-            <input id="url" placeholder="Search DuckDuckGo or Enter URL"
-                onkeydown="if(event.key==='Enter'){ gototab() }">
+            <input id="urlsearch" placeholder="Search DuckDuckGo or Enter URL">
         </div>
     </div>
     <div id="bookmarks">
@@ -39,14 +38,6 @@
             <button id="saveshortcut">Save</button>
         </div>
     </div>
-
-    <script>
-        const { ipcRenderer } = require('electron')
-        function gototab() {
-            let query = document.getElementById('url').value
-            ipcRenderer.send('load-index', query)
-        }
-    </script>
 </body>
 
 </html>

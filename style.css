@@ -8,17 +8,43 @@
     --dark: #292929;
 }
 
-
 body {
-    width: 100%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    max-width: 100%;
     height: 100%;
-    background-color: #17262f;
+    background-color: var(--black);
     align-items: center;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
+
+/* Left sidebar: fixed so it doesn't overlap the webview area */
 
 #sidebar {
     width: 10%;
     height: 115vh;
+    margin-top: -13px;
+    padding-top: 15px;
+    padding-left: 12px;
+    justify-content: top;
+    display: flex;
+    background-color: transparent;
+    border-radius: 0px;
+    border-width: 1px;
+    border-color: transparent;
+    border-style: solid;
+    z-index: 1;
+    position: absolute;
+    flex-direction: column;
+    right: 99%;
+    transition: 0.3s ease-in-out;
+}
+
+#sidebar:hover {
+    width: 120px;
+    margin-left: 0px;
+    margin-top: -13px;
+    height: 100vh;
     padding-top: 15px;
     padding-left: 12px;
     justify-content: top;
@@ -28,31 +54,17 @@ body {
     border-width: 2px;
     border-color: rgb(255, 255, 255);
     border-style: solid;
-    z-index: 10;
-    position: absolute;
-    flex-direction: column;
-    right: 99%;
-    transition: 0.3s ease-in-out;
-}
-
-#sidebar:hover {
-    width: 120px;
-    margin-left: 2px;
-    height: 100vh;
-    padding-top: 15px;
-    padding-left: 12px;
-    justify-content: top;
-    display: flex;
-    background-color: #292929;
-    border-radius: 20px;
-    border-width: 2px;
-    border-color: rgb(255, 255, 255);
-    border-style: solid;
-    z-index: 10;
+    border-left: none;
+    z-index: 1;
     flex-direction: column;
     right: 100%;
     transform: translateX(100%);
     margin-left: 20px;
+}
+
+#sidebar:not(:hover) .sidebtn {
+    opacity: 0;
+    transition: opacity .5s ease-in-out;
 }
 
 #sidebtns {
@@ -72,38 +84,86 @@ body {
     color: rgb(59, 59, 59);
 }
 
+#sidebtns {
+    gap: 7px;
+}
+
+.sidebtn {
+    width: 60px;
+    margin-top: 15px;
+    background-color: rgb(223, 223, 223);
+    border-radius: 5px;
+}
+
+#gotosettings {
+    width: 90%;
+    position: absolute;
+    bottom: 20px;
+    margin-left: -8px;
+}
+
+/* push the searchbar to the right of the sidebar */
 #searchbar {
-    width: 97.5%;
+    width: 100%;
     height: 50px;
     background-color: var(--dark);
     border-radius: 10px;
-    border-width: 2px;
-    border-color: var(--white);
+    border-width: 1px;
+    border-color: rgb(35, 34, 34);
     border-style: solid;
     flex-direction: row;
     justify-content: space-evenly;
     display: flex;
-    margin-right: 20px;
     align-items: center;
+    justify-self: center;
+}
+
+#sidebar:hover + #searchbar {
+    width: 85% !important;
+    transition: all 0.2s ease-in-out;
+    transform: translateX(70px);
+}
+
+#sidebar:not(:hover) + #searchbar {
+    width: 100%;
+    transition: all 0.2s ease-in-out;
+}
+
+#sidebar:hover + #searchbar #url {
+    width: 75vw !important;
+    transition: width 0.2s ease-in-out;
+}
+
+#sidebar:not(:hover) + #searchbar #url {
+    width: 90vw;
+    transition: width 0.2s ease-in-out;
 }
 
 #searchlogo {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
+}
+
+#searchlogo:hover {
+    cursor: pointer;
 }
 
 #url {
     position: relative;
-    width: 60vh;
-    height: 80%;
+    width: 90vw;
+    height: 110%;
     align-items: center;
     background-color: var(--dark);
     border-radius: 10px;
     border-width: 2px;
-    border-color: aliceblue;
-    color: white;
+    border-color: rgb(96, 96, 96);
+    border-style: solid;
+    color: #ffffff;
+    padding-left: 10px;
+    font-size: 18px;
 }
 
+/* vertical list of tabs in the sidebar */
 #sidetabs {
     display: flex;
     flex-direction: row;
@@ -113,20 +173,20 @@ body {
     padding: 5px;
 }
 
-#tab {
-    width: 75%;
-    height: 10%;
-    color: white;
-    margin-top: 20%;
-    margin-right: 10%;
-    display: none;
-}
+.tab {
+        width: 75%;
+        height: 10%;
+        color: #ffffff;
+        margin-top: 20%;
+        margin-right: 10%;
+        display: none;
+    }
 
-#view {
-    position: absolute;
-    top: 10%;
-    left: 0;
-    width: 100%;
-    height: 90%;
-    z-index: 0;
-}
+    #view {
+        position: absolute;
+        top: 10%;
+        left: 0;
+        width: 100%;
+        height: 90%;
+        z-index: 0;
+    }

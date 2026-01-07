@@ -1,8 +1,9 @@
-const { contextBridge, ipcRenderer } = require('electron')
+const { contextBridge, ipcRenderer } = require('electron');
 
-contextBridge.exposeInMainWorld('versions', {
-  node: () => process.versions.node,
-  chrome: () => process.versions.chrome,
-  electron: () => process.versions.electron
-})
-
+contextBridge.exposeInMainWorld('api', {
+    getShortcuts: () => ipcRenderer.invoke('get-shortcuts'),
+    saveShortcuts: (data) => ipcRenderer.send('save-shortcuts', data),
+    loadIndex: (query) => ipcRenderer.send('load-index', query),
+    onOpenQuery: (callback) =>
+        ipcRenderer.on('open-query', (_, query) => callback(query))
+});

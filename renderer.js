@@ -28,3 +28,8 @@ function addTab() {
     const target = text.startsWith("http") ? text : "https://duckduckgo.com/?q=" + encodeURIComponent(text);
     if (view) view.src = target;
 }
+
+window.oauth.onCode((code) => {
+    console.log("Google OAuth code:", code);
+    // Exchange code for tokens here
+});

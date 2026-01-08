@@ -105,7 +105,7 @@ body {
 /* push the searchbar to the right of the sidebar */
 #searchbar {
     width: 100%;
-    height: 50px;
+    height: 60px;
     background-color: var(--dark);
     border-radius: 10px;
     border-width: 1px;
@@ -116,10 +116,13 @@ body {
     display: flex;
     align-items: center;
     justify-self: center;
+    margin-bottom: 10px;
+    position: absolute;
+    top: 1px;
 }
 
 #sidebar:hover + #searchbar {
-    width: 85% !important;
+    width: 86% !important;
     transition: all 0.2s ease-in-out;
     transform: translateX(70px);
 }
@@ -130,7 +133,7 @@ body {
 }
 
 #sidebar:hover + #searchbar #url {
-    width: 75vw !important;
+    width: 76vw !important;
     transition: width 0.2s ease-in-out;
 }
 
